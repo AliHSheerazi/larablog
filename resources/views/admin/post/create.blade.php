@@ -36,7 +36,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="">Description</label>
-                    <textarea name="description" class="form-control"  rows="5"></textarea>
+                    <textarea name="description"id="Mysummernote" class="form-control"  rows="5"></textarea>
                 </div>
                 <div class="mb-3">
                     <label for="">Youtube Iframe</label>

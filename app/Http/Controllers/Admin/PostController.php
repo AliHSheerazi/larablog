@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
 use App\Models\Post;
 use App\Http\Requests\Admin\PostFormRequest;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -26,7 +27,7 @@ class PostController extends Controller
         $post = new Post;
         $post->category_id = $data['category_id'];
         $post->name = $data['name'];
-        $post->slug = $data['slug'];
+        $post->slug = Str::slug($data['slug']);
         $post->description = $data['description'];
        
         $post->meta_description = $data['meta_description'];
@@ -52,7 +53,7 @@ class PostController extends Controller
         $post = Post::find($post_id);
         $post->category_id = $data['category_id'];
         $post->name = $data['name'];
-        $post->slug = $data['slug'];
+        $post->slug = Str::slug($data['slug']);
         $post->description = $data['description'];
        
         $post->meta_description = $data['meta_description'];
@@ -65,5 +66,22 @@ class PostController extends Controller
         $post->save();
 
         return redirect('admin/posts')->with('message','Category added successfully');
+    }
+
+    public function delete($post_id){
+        $post = Post::find($post_id);
+
+        if($post)
+        {
+            
+            $post->delete();
+            return redirect('admin/posts')->with('message','Post Deleted Successfully');
+        }
+        else
+        {
+            return redirect('admin/posts')->with('message','No Post Id Found');
+        }
+
+        
     }
 }
