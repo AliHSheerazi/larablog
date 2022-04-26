@@ -51,7 +51,7 @@ class CategoryController extends Controller
     public function update(CategoryFormRequest $request, $category_id){
         $data = $request->validated();
         $category = Category::find($category_id);
-        $category->name = $data['name'];
+        $category->name = $data['name']; 
         $category->slug = Str::slug($data['slug']);
         $category->description = $data['description'];
         
@@ -60,6 +60,7 @@ class CategoryController extends Controller
 
             if(File::exists($destination)){
                 File::delete($destination);
+                
             }
             $file = $request->file('image');
             $filename = time() . '.'. $file->getclientOriginalExtension();

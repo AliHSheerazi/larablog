@@ -21,7 +21,7 @@ class FrontendController extends Controller
             $post = Post::where('category_id', $category->id)->where('status', '0')->paginate(1);
             return view('frontend.post.index ', compact('post','category'));
         }else{
-            return view('/ ');
+            return view('/');
         }
         
     }
