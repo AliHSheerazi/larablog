@@ -1,0 +1,5 @@
+<IfModule mod_rerite.c>
+    RewriteEngine on
+    RewriteCond %{REQUEST_URl} !^public
+    RewriteRule ^(.*)$ public/$1 [L]
+<IfModule>
