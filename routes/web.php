@@ -14,6 +14,10 @@ Route::get('/',[App\http\Controllers\Frontend\FrontendController::class, 'index'
 Route::get('tutorial/{category_slug}',[App\http\Controllers\Frontend\FrontendController::class, 'ViewCategoryPost']);
 Route::get('tutorial/{category_slug}/{pos_slug}',[App\http\Controllers\Frontend\FrontendController::class, 'ViewPost']);
 
+// Comment routes
+Route::post('/comments',[App\http\Controllers\Frontend\CommentController::class, 'store']);
+
+
 Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
     Route::get('/dashboard',[App\http\Controllers\Admin\DashboardController::class, 'index']);
     

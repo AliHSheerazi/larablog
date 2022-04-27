@@ -37,3 +37,6 @@
 .bg-gray{
     background-color: #ddd;
 }
+.owl-carousel .owl-item img{
+    height: 315px;
+}
